@@ -33,8 +33,8 @@ const services = [
       "Certificat SSL inclus",
       "Hébergement et maintenance",
     ],
-    color: "bg-blue-50",
-    iconColor: "text-blue-600",
+    gradient: "from-blue-500 to-cyan",
+    glowColor: "shadow-blue-500/20",
   },
   {
     id: "e-commerce",
@@ -51,8 +51,8 @@ const services = [
       "Outils marketing intégrés",
       "Application mobile responsive",
     ],
-    color: "bg-green-50",
-    iconColor: "text-green-600",
+    gradient: "from-emerald-500 to-teal-400",
+    glowColor: "shadow-emerald-500/20",
   },
   {
     id: "plateformes",
@@ -60,7 +60,7 @@ const services = [
     title: "Plateformes Sur Mesure",
     subtitle: "Des solutions métier personnalisées",
     description:
-      "Nous développons des applications web et mobiles sur mesure pour digitaliser vos processus métier. De l'ERP au CRM en passant par les outils collaboratifs, nous créons la solution qui correspond exactement à vos besoins.",
+      "Nous développons des applications web et mobiles sur mesure pour digitaliser vos processus métier. De l'ERP au CRM, nous créons la solution qui correspond exactement à vos besoins.",
     features: [
       "Analyse et conseil fonctionnel",
       "Architecture scalable et sécurisée",
@@ -69,26 +69,26 @@ const services = [
       "Tests et assurance qualité",
       "Formation et documentation",
     ],
-    color: "bg-purple-50",
-    iconColor: "text-purple-600",
+    gradient: "from-accent to-purple-500",
+    glowColor: "shadow-accent/20",
   },
   {
     id: "voip",
     icon: Phone,
     title: "VoIP & Téléphonie",
-    subtitle: "Communication d'entreprise nouvelle génération",
+    subtitle: "Communication nouvelle génération",
     description:
-      "Modernisez votre téléphonie avec nos solutions VoIP. Réduisez vos coûts de communication tout en bénéficiant de fonctionnalités avancées : visioconférence, standard virtuel, messagerie unifiée et bien plus.",
+      "Modernisez votre téléphonie avec nos solutions VoIP. Réduisez vos coûts tout en bénéficiant de fonctionnalités avancées : visioconférence, standard virtuel, messagerie unifiée.",
     features: [
       "Standard téléphonique virtuel (IPBX)",
       "Visioconférence HD",
       "Messagerie unifiée",
-      "Numéros virtuels nationaux et internationaux",
+      "Numéros virtuels internationaux",
       "Intégration CRM",
       "Application mobile VoIP",
     ],
-    color: "bg-orange-50",
-    iconColor: "text-orange-600",
+    gradient: "from-orange-500 to-amber-400",
+    glowColor: "shadow-orange-500/20",
   },
   {
     id: "support",
@@ -96,7 +96,7 @@ const services = [
     title: "Parc Informatique & Support",
     subtitle: "Votre IT entre de bonnes mains",
     description:
-      "Nous prenons en charge la gestion complète de votre parc informatique : installation, maintenance, sécurité et support utilisateur. Concentrez-vous sur votre cœur de métier, nous gérons votre IT.",
+      "Nous prenons en charge la gestion complète de votre parc informatique : installation, maintenance, sécurité et support utilisateur.",
     features: [
       "Audit et inventaire du parc",
       "Maintenance préventive et curative",
@@ -105,8 +105,8 @@ const services = [
       "Gestion des licences logicielles",
       "Supervision et monitoring 24/7",
     ],
-    color: "bg-red-50",
-    iconColor: "text-red-600",
+    gradient: "from-rose-500 to-pink-400",
+    glowColor: "shadow-rose-500/20",
   },
   {
     id: "conseil",
@@ -114,7 +114,7 @@ const services = [
     title: "Conseil & Stratégie Digitale",
     subtitle: "Pilotez votre transformation numérique",
     description:
-      "Bénéficiez de notre expertise pour définir votre stratégie digitale. Nous analysons votre situation actuelle, identifions les opportunités et vous accompagnons dans la mise en œuvre de votre feuille de route numérique.",
+      "Bénéficiez de notre expertise pour définir votre stratégie digitale. Nous analysons votre situation, identifions les opportunités et vous accompagnons dans la mise en œuvre.",
     features: [
       "Audit digital complet",
       "Stratégie de transformation numérique",
@@ -123,8 +123,8 @@ const services = [
       "Formation des équipes",
       "Veille technologique",
     ],
-    color: "bg-cyan-50",
-    iconColor: "text-cyan-600",
+    gradient: "from-cyan to-blue-500",
+    glowColor: "shadow-cyan/20",
   },
 ];
 
@@ -132,14 +132,21 @@ export default function ServicesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="bg-primary py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative pt-32 pb-20 overflow-hidden">
+        <div className="absolute inset-0 grid-pattern" />
+        <div className="absolute top-1/3 -left-32 w-[400px] h-[400px] bg-accent/15 rounded-full blur-[100px]" />
+        <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-cyan/10 rounded-full blur-[80px]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <p className="text-accent-light font-semibold mb-3">Nos Services</p>
-            <h1 className="text-4xl sm:text-5xl font-bold text-white mb-6">
-              Des solutions digitales complètes pour votre entreprise
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent-light text-sm font-medium mb-6">
+              Nos Services
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+              Des solutions digitales{" "}
+              <span className="gradient-text">complètes</span>
             </h1>
-            <p className="text-gray-300 text-lg leading-relaxed">
+            <p className="text-gray-400 text-lg leading-relaxed">
               Du site web à la gestion de parc informatique, en passant par la
               VoIP et le conseil stratégique, Digitedia couvre l&apos;ensemble de
               vos besoins numériques.
@@ -149,46 +156,40 @@ export default function ServicesPage() {
       </section>
 
       {/* Services List */}
-      <section className="py-20 lg:py-28">
+      <section className="pb-24 lg:pb-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="space-y-24">
+          <div className="space-y-32">
             {services.map((service, index) => (
               <div
                 key={service.id}
                 id={service.id}
                 className="scroll-mt-24"
               >
-                <div
-                  className={`grid lg:grid-cols-2 gap-12 items-center ${
-                    index % 2 !== 0 ? "lg:direction-rtl" : ""
-                  }`}
-                >
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
                   <div className={index % 2 !== 0 ? "lg:order-2" : ""}>
-                    <div
-                      className={`inline-flex items-center gap-2 px-4 py-2 ${service.color} rounded-full mb-6`}
-                    >
-                      <service.icon className={`w-5 h-5 ${service.iconColor}`} />
-                      <span className={`font-medium text-sm ${service.iconColor}`}>
-                        {service.subtitle}
-                      </span>
+                    <div className={`inline-flex w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} items-center justify-center mb-8 shadow-xl ${service.glowColor}`}>
+                      <service.icon className="w-8 h-8 text-white" />
                     </div>
-                    <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                    <p className="text-accent-light text-sm font-medium mb-3">
+                      {service.subtitle}
+                    </p>
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
                       {service.title}
                     </h2>
-                    <p className="text-gray-500 text-lg leading-relaxed mb-8">
+                    <p className="text-gray-400 text-lg leading-relaxed mb-8">
                       {service.description}
                     </p>
                     <Link
                       href="/contact"
-                      className="inline-flex items-center px-6 py-3 bg-accent text-white font-semibold rounded-lg hover:bg-accent-dark transition-colors"
+                      className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-accent/20"
                     >
                       Demander un devis
                       <ArrowRight className="ml-2 w-5 h-5" />
                     </Link>
                   </div>
                   <div className={index % 2 !== 0 ? "lg:order-1" : ""}>
-                    <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
-                      <h3 className="font-semibold text-gray-900 mb-6 text-lg">
+                    <div className="bg-primary-light/50 rounded-2xl p-8 border border-white/5">
+                      <h3 className="font-semibold text-white mb-6 text-lg">
                         Ce qui est inclus
                       </h3>
                       <ul className="space-y-4">
@@ -197,8 +198,10 @@ export default function ServicesPage() {
                             key={feature}
                             className="flex items-start gap-3"
                           >
-                            <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
-                            <span className="text-gray-600">{feature}</span>
+                            <div className="w-5 h-5 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center shrink-0 mt-0.5">
+                              <Check className="w-3 h-3 text-accent-light" />
+                            </div>
+                            <span className="text-gray-300">{feature}</span>
                           </li>
                         ))}
                       </ul>
@@ -212,18 +215,21 @@ export default function ServicesPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-gray-50 py-20 border-t border-gray-200">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
+      <section className="relative py-24 overflow-hidden border-t border-white/5">
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-cyan/10 to-magenta/5 animate-gradient" />
+        <div className="absolute inset-0 grid-pattern" />
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             Vous ne savez pas par où commencer ?
           </h2>
-          <p className="text-gray-500 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">
             Contactez-nous pour un audit gratuit. Nous analyserons vos besoins
-            et vous proposerons la solution la plus adaptée à votre situation.
+            et vous proposerons la solution la plus adaptée.
           </p>
           <Link
             href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-accent-dark transition-colors shadow-lg"
+            className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-accent/25"
           >
             Parlons de votre projet
             <ArrowRight className="ml-2 w-5 h-5" />

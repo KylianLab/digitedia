@@ -12,6 +12,7 @@ import {
   Award,
   Clock,
   Shield,
+  Sparkles,
 } from "lucide-react";
 
 const services = [
@@ -19,51 +20,57 @@ const services = [
     icon: Globe,
     title: "Sites Vitrines",
     description:
-      "Des sites web élégants et performants qui reflètent l'image de votre entreprise et convertissent vos visiteurs en clients.",
+      "Des sites web élégants et performants qui convertissent vos visiteurs en clients.",
     href: "/services#sites-vitrines",
+    gradient: "from-blue-500 to-cyan",
   },
   {
     icon: ShoppingCart,
     title: "E-Commerce",
     description:
-      "Des boutiques en ligne complètes et optimisées pour maximiser vos ventes et offrir une expérience d'achat fluide.",
+      "Des boutiques en ligne optimisées pour maximiser vos ventes.",
     href: "/services#e-commerce",
+    gradient: "from-emerald-500 to-teal-400",
   },
   {
     icon: Layers,
     title: "Plateformes Sur Mesure",
     description:
-      "Des solutions logicielles personnalisées pour digitaliser et automatiser vos processus métier.",
+      "Des solutions logicielles personnalisées pour vos processus métier.",
     href: "/services#plateformes",
+    gradient: "from-accent to-purple-500",
   },
   {
     icon: Phone,
     title: "VoIP & Téléphonie",
     description:
-      "Des solutions de téléphonie d'entreprise modernes pour améliorer votre communication interne et externe.",
+      "Des solutions de téléphonie modernes pour votre communication.",
     href: "/services#voip",
+    gradient: "from-orange-500 to-amber-400",
   },
   {
     icon: Monitor,
-    title: "Parc Informatique & Support",
+    title: "Parc IT & Support",
     description:
-      "Gestion complète de votre infrastructure IT avec un support réactif pour assurer la continuité de vos activités.",
+      "Gestion complète de votre infrastructure avec un support réactif.",
     href: "/services#support",
+    gradient: "from-rose-500 to-magenta",
   },
   {
     icon: Lightbulb,
     title: "Conseil & Stratégie",
     description:
-      "Un accompagnement stratégique pour définir et piloter votre transformation numérique avec succès.",
+      "Un accompagnement stratégique pour votre transformation numérique.",
     href: "/services#conseil",
+    gradient: "from-cyan to-blue-500",
   },
 ];
 
 const stats = [
-  { value: "150+", label: "Projets réalisés" },
-  { value: "98%", label: "Clients satisfaits" },
-  { value: "10+", label: "Années d'expérience" },
-  { value: "24/7", label: "Support disponible" },
+  { value: "150+", label: "Projets réalisés", icon: Sparkles },
+  { value: "98%", label: "Clients satisfaits", icon: Award },
+  { value: "10+", label: "Années d'expérience", icon: Clock },
+  { value: "24/7", label: "Support disponible", icon: Shield },
 ];
 
 const reasons = [
@@ -71,25 +78,25 @@ const reasons = [
     icon: Users,
     title: "Équipe pluridisciplinaire",
     description:
-      "Des experts en développement, design, infrastructure et stratégie digitale réunis sous un même toit.",
+      "Développement, design, infrastructure et stratégie digitale sous un même toit.",
   },
   {
     icon: Award,
     title: "Qualité garantie",
     description:
-      "Des standards élevés de qualité, des tests rigoureux et un suivi continu de chaque projet.",
+      "Des standards élevés, des tests rigoureux et un suivi continu.",
   },
   {
     icon: Clock,
     title: "Réactivité",
     description:
-      "Des délais respectés et une équipe disponible pour répondre rapidement à vos besoins.",
+      "Des délais respectés et une équipe toujours disponible.",
   },
   {
     icon: Shield,
     title: "Accompagnement durable",
     description:
-      "Un partenariat sur le long terme avec maintenance, évolutions et support technique continu.",
+      "Maintenance, évolutions et support technique sur le long terme.",
   },
 ];
 
@@ -97,22 +104,32 @@ export default function Home() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-primary overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-accent rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-accent-light rounded-full blur-3xl" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-36">
-          <div className="max-w-3xl">
-            <p className="text-accent-light font-semibold mb-4 animate-fade-in-up">
-              Agence Digitale Full-Service
-            </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6 animate-fade-in-up animation-delay-200">
+      <section className="relative min-h-screen flex items-center overflow-hidden">
+        {/* Background effects */}
+        <div className="absolute inset-0 grid-pattern" />
+        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] animate-pulse-glow" />
+        <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] bg-cyan/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-magenta/5 rounded-full blur-[120px]" />
+
+        {/* Floating decorative elements */}
+        <div className="absolute top-32 right-1/4 w-2 h-2 bg-accent rounded-full animate-float" />
+        <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-cyan rounded-full animate-float" style={{ animationDelay: "1s" }} />
+        <div className="absolute bottom-1/3 left-1/4 w-2.5 h-2.5 bg-magenta/60 rounded-full animate-float" style={{ animationDelay: "3s" }} />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 lg:py-0">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8 animate-fade-in-up">
+              <Sparkles className="w-4 h-4 text-accent-light" />
+              <span className="text-accent-light text-sm font-medium">
+                Agence Digitale Full-Service
+              </span>
+            </div>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-[1.1] mb-8 animate-fade-in-up animation-delay-200">
               Votre partenaire pour une{" "}
-              <span className="text-accent-light">transformation numérique</span>{" "}
+              <span className="gradient-text">transformation numérique</span>{" "}
               réussie
             </h1>
-            <p className="text-lg sm:text-xl text-gray-300 mb-10 leading-relaxed animate-fade-in-up animation-delay-400">
+            <p className="text-lg sm:text-xl text-gray-400 mb-12 leading-relaxed max-w-2xl animate-fade-in-up animation-delay-400">
               De la création de sites web à la gestion de votre parc
               informatique, Digitedia vous accompagne à chaque étape de votre
               croissance digitale.
@@ -120,14 +137,14 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-600">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-semibold rounded-lg hover:bg-accent-dark transition-colors shadow-lg"
+                className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-accent/25 hover:shadow-accent/40"
               >
                 Demander un devis gratuit
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
                 href="/realisations"
-                className="inline-flex items-center justify-center px-8 py-4 bg-primary-light text-white font-semibold rounded-lg hover:bg-white/10 transition-colors border border-white/20"
+                className="inline-flex items-center justify-center px-8 py-4 bg-white/5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all border border-white/10"
               >
                 Voir nos réalisations
               </Link>
@@ -137,15 +154,19 @@ export default function Home() {
       </section>
 
       {/* Stats */}
-      <section className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <section className="relative border-y border-white/10">
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-cyan/5" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <p className="text-3xl sm:text-4xl font-bold text-accent mb-1">
+              <div key={stat.label} className="text-center group">
+                <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mx-auto mb-4 group-hover:border-accent/40 transition-colors">
+                  <stat.icon className="w-6 h-6 text-accent-light" />
+                </div>
+                <p className="text-3xl sm:text-4xl font-bold gradient-text mb-1">
                   {stat.value}
                 </p>
-                <p className="text-gray-500 font-medium">{stat.label}</p>
+                <p className="text-gray-500 font-medium text-sm">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -153,38 +174,49 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="bg-gray-50 py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <p className="text-accent font-semibold mb-3">Nos Services</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Des solutions complètes pour votre entreprise
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 dot-pattern opacity-50" />
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-20">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent-light text-sm font-medium mb-6">
+              Nos Services
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+              Des solutions <span className="gradient-text">complètes</span> pour
+              votre entreprise
             </h2>
-            <p className="text-gray-500 text-lg">
+            <p className="text-gray-400 text-lg">
               De la conception à la maintenance, nous couvrons l&apos;ensemble de
               vos besoins numériques.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
               <Link
                 key={service.title}
                 href={service.href}
-                className="group bg-white rounded-2xl p-8 shadow-sm border border-gray-200 hover:shadow-lg hover:border-accent/30 transition-all duration-300"
+                className="group relative bg-primary-light/50 rounded-2xl p-8 border border-white/5 card-hover overflow-hidden"
               >
-                <div className="w-14 h-14 bg-secondary rounded-xl flex items-center justify-center mb-6 group-hover:bg-accent group-hover:text-white transition-colors">
-                  <service.icon className="w-7 h-7 text-accent group-hover:text-white transition-colors" />
+                {/* Hover gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                <div className="relative">
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg`}>
+                    <service.icon className="w-7 h-7 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed mb-6">
+                    {service.description}
+                  </p>
+                  <span className="inline-flex items-center text-accent-light font-medium text-sm group-hover:gap-2 transition-all">
+                    En savoir plus
+                    <ArrowRight className="w-4 h-4 ml-1" />
+                  </span>
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {service.title}
-                </h3>
-                <p className="text-gray-500 leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                <span className="inline-flex items-center text-accent font-medium group-hover:gap-2 transition-all">
-                  En savoir plus
-                  <ArrowRight className="w-4 h-4 ml-1" />
-                </span>
               </Link>
             ))}
           </div>
@@ -192,21 +224,22 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-white py-20 lg:py-28">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-accent font-semibold mb-3">
+              <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent-light text-sm font-medium mb-6">
                 Pourquoi Digitedia
-              </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
-                Un partenaire fiable pour vos projets numériques
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                Un partenaire <span className="gradient-text">fiable</span> pour
+                vos projets numériques
               </h2>
-              <p className="text-gray-500 text-lg mb-8 leading-relaxed">
-                Depuis notre création, nous avons accompagné des dizaines
-                d&apos;entreprises dans leur transformation digitale. Notre
-                approche combine expertise technique, créativité et rigueur pour
-                livrer des solutions qui font la différence.
+              <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+                Notre approche combine expertise technique, créativité et rigueur
+                pour livrer des solutions qui font la différence.
               </p>
               <ul className="space-y-4">
                 {[
@@ -216,22 +249,24 @@ export default function Home() {
                   "Support et maintenance inclus",
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-accent shrink-0 mt-0.5" />
-                    <span className="text-gray-700 font-medium">{item}</span>
+                    <CheckCircle2 className="w-5 h-5 text-accent-light shrink-0 mt-0.5" />
+                    <span className="text-gray-300">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {reasons.map((reason) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {reasons.map((reason, i) => (
                 <div
                   key={reason.title}
-                  className="bg-gray-50 rounded-2xl p-6 border border-gray-200"
+                  className={`relative bg-primary-light/50 rounded-2xl p-6 border border-white/5 card-hover ${
+                    i === 0 ? "sm:translate-y-4" : i === 3 ? "sm:-translate-y-4" : ""
+                  }`}
                 >
-                  <div className="w-12 h-12 bg-secondary rounded-xl flex items-center justify-center mb-4">
-                    <reason.icon className="w-6 h-6 text-accent" />
+                  <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center mb-4">
+                    <reason.icon className="w-6 h-6 text-accent-light" />
                   </div>
-                  <h3 className="font-semibold text-gray-900 mb-2">
+                  <h3 className="font-semibold text-white mb-2">
                     {reason.title}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
@@ -245,27 +280,29 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="bg-accent py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            Prêt à donner vie à votre projet ?
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-cyan/10 to-magenta/10 animate-gradient" />
+        <div className="absolute inset-0 grid-pattern" />
+
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+            Prêt à donner vie à <span className="gradient-text">votre projet</span> ?
           </h2>
-          <p className="text-blue-100 text-lg mb-10 max-w-2xl mx-auto">
+          <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
             Contactez-nous dès aujourd&apos;hui pour discuter de votre projet.
-            Notre équipe vous répondra sous 24 heures avec une proposition
-            personnalisée.
+            Notre équipe vous répondra sous 24 heures.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-accent font-semibold rounded-lg hover:bg-gray-50 transition-colors shadow-lg"
+              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-accent/25"
             >
               Contactez-nous
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
             <Link
               href="/services"
-              className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg hover:bg-white/10 transition-colors border-2 border-white/40"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white/5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all border border-white/10"
             >
               Découvrir nos services
             </Link>

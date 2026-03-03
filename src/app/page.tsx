@@ -1,4 +1,6 @@
-import Link from "next/link";
+"use client";
+
+import { useState } from "react";
 import {
   Globe,
   ShoppingCart,
@@ -13,7 +15,14 @@ import {
   Clock,
   Shield,
   Sparkles,
+  Mail,
+  Send,
+  ExternalLink,
 } from "lucide-react";
+
+/* ============================
+   DATA
+   ============================ */
 
 const services = [
   {
@@ -21,7 +30,6 @@ const services = [
     title: "Sites Vitrines",
     description:
       "Des sites web élégants et performants qui convertissent vos visiteurs en clients.",
-    href: "/services#sites-vitrines",
     gradient: "from-blue-500 to-cyan",
   },
   {
@@ -29,7 +37,6 @@ const services = [
     title: "E-Commerce",
     description:
       "Des boutiques en ligne optimisées pour maximiser vos ventes.",
-    href: "/services#e-commerce",
     gradient: "from-emerald-500 to-teal-400",
   },
   {
@@ -37,7 +44,6 @@ const services = [
     title: "Plateformes Sur Mesure",
     description:
       "Des solutions logicielles personnalisées pour vos processus métier.",
-    href: "/services#plateformes",
     gradient: "from-accent to-purple-500",
   },
   {
@@ -45,7 +51,6 @@ const services = [
     title: "VoIP & Téléphonie",
     description:
       "Des solutions de téléphonie modernes pour votre communication.",
-    href: "/services#voip",
     gradient: "from-orange-500 to-amber-400",
   },
   {
@@ -53,7 +58,6 @@ const services = [
     title: "Parc IT & Support",
     description:
       "Gestion complète de votre infrastructure avec un support réactif.",
-    href: "/services#support",
     gradient: "from-rose-500 to-magenta",
   },
   {
@@ -61,7 +65,6 @@ const services = [
     title: "Conseil & Stratégie",
     description:
       "Un accompagnement stratégique pour votre transformation numérique.",
-    href: "/services#conseil",
     gradient: "from-cyan to-blue-500",
   },
 ];
@@ -100,18 +103,76 @@ const reasons = [
   },
 ];
 
+const projects = [
+  {
+    title: "Cabinet Montaigne Avocats",
+    category: "Site Vitrine",
+    icon: Globe,
+    description:
+      "Refonte complète du site d'un cabinet d'avocats parisien. Design sobre et professionnel.",
+    tags: ["Next.js", "Tailwind CSS", "CMS"],
+    gradient: "from-blue-500 to-cyan",
+  },
+  {
+    title: "Maison Rivière",
+    category: "E-Commerce",
+    icon: ShoppingCart,
+    description:
+      "Boutique en ligne pour un artisan chocolatier avec click & collect et livraison nationale.",
+    tags: ["Shopify", "API", "Stripe"],
+    gradient: "from-emerald-500 to-teal-400",
+  },
+  {
+    title: "LogiTrack Pro",
+    category: "Plateforme Sur Mesure",
+    icon: Layers,
+    description:
+      "Plateforme logistique avec suivi en temps réel, gestion de flotte et facturation automatisée.",
+    tags: ["React", "Node.js", "PostgreSQL"],
+    gradient: "from-accent to-purple-500",
+  },
+  {
+    title: "TechComm Solutions",
+    category: "VoIP & Infrastructure",
+    icon: Phone,
+    description:
+      "Déploiement VoIP pour 120 collaborateurs sur 3 sites avec migration depuis PBX traditionnel.",
+    tags: ["VoIP", "SIP", "IPBX"],
+    gradient: "from-orange-500 to-amber-400",
+  },
+];
+
+const serviceOptions = [
+  "Site Vitrine",
+  "E-Commerce",
+  "Plateforme Sur Mesure",
+  "VoIP & Téléphonie",
+  "Parc Informatique & Support",
+  "Conseil & Stratégie Digitale",
+  "Autre",
+];
+
+/* ============================
+   PAGE
+   ============================ */
+
 export default function Home() {
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
   return (
     <>
-      {/* Hero Section */}
+      {/* ==================== HERO ==================== */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        {/* Background effects */}
         <div className="absolute inset-0 grid-pattern" />
         <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px] animate-pulse-glow" />
         <div className="absolute bottom-1/4 -right-32 w-[400px] h-[400px] bg-cyan/15 rounded-full blur-[100px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-magenta/5 rounded-full blur-[120px]" />
 
-        {/* Floating decorative elements */}
         <div className="absolute top-32 right-1/4 w-2 h-2 bg-accent rounded-full animate-float" />
         <div className="absolute top-1/2 right-1/3 w-1.5 h-1.5 bg-cyan rounded-full animate-float" style={{ animationDelay: "1s" }} />
         <div className="absolute bottom-1/3 left-1/4 w-2.5 h-2.5 bg-magenta/60 rounded-full animate-float" style={{ animationDelay: "3s" }} />
@@ -135,25 +196,25 @@ export default function Home() {
               croissance digitale.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up animation-delay-600">
-              <Link
-                href="/contact"
+              <a
+                href="#contact"
                 className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-accent/25 hover:shadow-accent/40"
               >
                 Demander un devis gratuit
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Link>
-              <Link
-                href="/realisations"
+              </a>
+              <a
+                href="#realisations"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white/5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all border border-white/10"
               >
                 Voir nos réalisations
-              </Link>
+              </a>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
+      {/* ==================== STATS ==================== */}
       <section className="relative border-y border-white/10">
         <div className="absolute inset-0 bg-gradient-to-r from-accent/5 via-transparent to-cyan/5" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -173,8 +234,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Services */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
+      {/* ==================== SERVICES ==================== */}
+      <section id="services" className="relative py-24 lg:py-32 overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 dot-pattern opacity-50" />
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-accent/5 rounded-full blur-[100px]" />
 
@@ -194,14 +255,11 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {services.map((service) => (
-              <Link
+              <div
                 key={service.title}
-                href={service.href}
                 className="group relative bg-primary-light/50 rounded-2xl p-8 border border-white/5 card-hover overflow-hidden"
               >
-                {/* Hover gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-accent/5 to-cyan/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
                 <div className="relative">
                   <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 shadow-lg`}>
                     <service.icon className="w-7 h-7 text-white" />
@@ -209,22 +267,18 @@ export default function Home() {
                   <h3 className="text-xl font-semibold text-white mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-gray-400 leading-relaxed mb-6">
+                  <p className="text-gray-400 leading-relaxed">
                     {service.description}
                   </p>
-                  <span className="inline-flex items-center text-accent-light font-medium text-sm group-hover:gap-2 transition-all">
-                    En savoir plus
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </span>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="relative py-24 lg:py-32 overflow-hidden">
+      {/* ==================== À PROPOS ==================== */}
+      <section id="a-propos" className="relative py-24 lg:py-32 overflow-hidden scroll-mt-24">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -279,33 +333,210 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="relative py-24 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-accent/10 via-cyan/10 to-magenta/10 animate-gradient" />
-        <div className="absolute inset-0 grid-pattern" />
+      {/* ==================== RÉALISATIONS ==================== */}
+      <section id="realisations" className="relative py-24 lg:py-32 overflow-hidden scroll-mt-24">
+        <div className="absolute inset-0 dot-pattern opacity-30" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-cyan/10 rounded-full blur-[100px]" />
 
-        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
-            Prêt à donner vie à <span className="gradient-text">votre projet</span> ?
-          </h2>
-          <p className="text-gray-400 text-lg mb-12 max-w-2xl mx-auto">
-            Contactez-nous dès aujourd&apos;hui pour discuter de votre projet.
-            Notre équipe vous répondra sous 24 heures.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-accent/25"
-            >
-              Contactez-nous
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white/5 text-white font-semibold rounded-xl hover:bg-white/10 transition-all border border-white/10"
-            >
-              Découvrir nos services
-            </Link>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-20">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent-light text-sm font-medium mb-6">
+              Nos Réalisations
+            </span>
+            <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6">
+              Des projets concrets, des résultats{" "}
+              <span className="gradient-text">mesurables</span>
+            </h2>
+            <p className="text-gray-400 text-lg">
+              Une sélection de projets qui illustrent notre savoir-faire.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {projects.map((project) => (
+              <div
+                key={project.title}
+                className="group bg-primary-light/50 rounded-2xl border border-white/5 overflow-hidden card-hover"
+              >
+                <div className={`relative p-10 flex items-center justify-center bg-gradient-to-br ${project.gradient} overflow-hidden`}>
+                  <div className="absolute inset-0 bg-black/20" />
+                  <div className="relative w-20 h-20 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/20">
+                    <project.icon className="w-10 h-10 text-white" />
+                  </div>
+                </div>
+                <div className="p-8">
+                  <span className="inline-block px-3 py-1 bg-accent/10 border border-accent/20 rounded-lg text-xs font-medium text-accent-light mb-4">
+                    {project.category}
+                  </span>
+                  <h3 className="text-xl font-semibold text-white mb-3">
+                    {project.title}
+                  </h3>
+                  <p className="text-gray-400 leading-relaxed mb-6">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-3 py-1 bg-white/5 border border-white/10 text-gray-400 rounded-lg text-xs font-medium"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ==================== CONTACT ==================== */}
+      <section id="contact" className="relative py-24 lg:py-32 overflow-hidden scroll-mt-24">
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-accent/5 to-transparent" />
+        <div className="absolute top-1/3 -right-32 w-[400px] h-[400px] bg-accent/15 rounded-full blur-[100px]" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* Left: Info */}
+            <div>
+              <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent-light text-sm font-medium mb-6">
+                Contact
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+                Parlons de votre{" "}
+                <span className="gradient-text">projet</span>
+              </h2>
+              <p className="text-gray-400 text-lg mb-10 leading-relaxed">
+                Une question, un projet, un besoin d&apos;accompagnement ?
+                Contactez-nous et recevez une réponse personnalisée sous 24h.
+              </p>
+
+              {/* Email card */}
+              <a
+                href="mailto:contact@updaty.be"
+                className="flex items-center gap-4 p-6 bg-primary-light/50 rounded-2xl border border-white/5 card-hover mb-6 group"
+              >
+                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-accent to-cyan flex items-center justify-center shadow-lg shrink-0">
+                  <Mail className="w-7 h-7 text-white" />
+                </div>
+                <div>
+                  <p className="text-gray-400 text-sm">Écrivez-nous directement</p>
+                  <p className="text-white text-lg font-semibold group-hover:text-accent-light transition-colors">
+                    contact@updaty.be
+                  </p>
+                </div>
+                <ExternalLink className="w-5 h-5 text-gray-600 ml-auto group-hover:text-accent-light transition-colors" />
+              </a>
+
+              <div className="p-6 bg-primary-light/30 rounded-2xl border border-white/5">
+                <p className="text-gray-500 text-sm leading-relaxed">
+                  Nous répondons à toutes les demandes sous <span className="text-white font-medium">24 heures</span>.
+                  N&apos;hésitez pas à nous détailler votre projet pour que nous
+                  puissions vous faire une proposition adaptée.
+                </p>
+              </div>
+            </div>
+
+            {/* Right: Form */}
+            <div>
+              {submitted ? (
+                <div className="text-center py-16 animate-fade-in-up bg-primary-light/30 rounded-3xl border border-white/5">
+                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-teal-400 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg shadow-emerald-500/20">
+                    <CheckCircle2 className="w-10 h-10 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-4">
+                    Message envoyé !
+                  </h3>
+                  <p className="text-gray-400 max-w-sm mx-auto">
+                    Merci pour votre message. Notre équipe vous recontactera sous 24 heures.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-5 bg-primary-light/30 rounded-3xl p-8 sm:p-10 border border-white/5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div>
+                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-300 mb-2">
+                        Prénom *
+                      </label>
+                      <input
+                        type="text"
+                        id="firstName"
+                        name="firstName"
+                        required
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-accent/50 focus:border-accent/50 outline-none transition-all"
+                        placeholder="Jean"
+                      />
+                    </div>
+                    <div>
+                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-300 mb-2">
+                        Nom *
+                      </label>
+                      <input
+                        type="text"
+                        id="lastName"
+                        name="lastName"
+                        required
+                        className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-accent/50 focus:border-accent/50 outline-none transition-all"
+                        placeholder="Dupont"
+                      />
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-2">
+                      Email *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-accent/50 focus:border-accent/50 outline-none transition-all"
+                      placeholder="jean@entreprise.com"
+                    />
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="block text-sm font-medium text-gray-300 mb-2">
+                      Service souhaité *
+                    </label>
+                    <select
+                      id="service"
+                      name="service"
+                      required
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white focus:ring-2 focus:ring-accent/50 focus:border-accent/50 outline-none transition-all"
+                    >
+                      <option value="" className="bg-primary">Sélectionnez un service</option>
+                      {serviceOptions.map((opt) => (
+                        <option key={opt} value={opt} className="bg-primary">{opt}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-2">
+                      Votre projet *
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      required
+                      rows={4}
+                      className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-gray-500 focus:ring-2 focus:ring-accent/50 focus:border-accent/50 outline-none transition-all resize-none"
+                      placeholder="Décrivez votre projet, vos objectifs..."
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full inline-flex items-center justify-center px-8 py-4 bg-gradient-to-r from-accent to-cyan text-white font-semibold rounded-xl hover:opacity-90 transition-all shadow-lg shadow-accent/25"
+                  >
+                    <Send className="w-5 h-5 mr-2" />
+                    Envoyer ma demande
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
         </div>
       </section>

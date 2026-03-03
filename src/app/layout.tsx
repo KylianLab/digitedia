@@ -4,12 +4,9 @@ import Footer from "@/components/Footer";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Digitedia | Agence Digitale - Sites Web, E-Commerce, VoIP & IT",
-    template: "%s | Digitedia",
-  },
+  title: "Digitedia | Agence Digitale - Sites Web, E-Commerce, VoIP & IT",
   description:
-    "Digitedia, votre agence digitale experte en création de sites web, e-commerce, développement de plateformes, VoIP et gestion de parc informatique. Accompagnement sur mesure pour votre transformation numérique.",
+    "Digitedia, votre agence digitale experte en création de sites web, e-commerce, développement de plateformes, VoIP et gestion de parc informatique. Contactez-nous : contact@updaty.be",
   keywords: [
     "agence digitale",
     "création site web",
